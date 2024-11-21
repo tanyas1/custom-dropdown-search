@@ -1,0 +1,171 @@
+.check-box-dropdown {
+  position: relative;
+  .dropdown-label {
+    color: #1f2232;
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.125rem; /* 150% */
+    letter-spacing: 0.01563rem;
+    position: relative;
+    margin-bottom: 0.25rem;
+    .required-indicator {
+      position: absolute;
+      top: 0rem;
+    }
+  }
+  .check-box-input-field {
+    padding: 0.25rem 0.5rem;
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.25rem;
+    border: 0.06rem solid var(--grey-800, #62646f);
+
+    background: var(--white, #fff);
+    .check-box-input-value {
+      width: calc(100% - 0.5rem - 0.5rem);
+      outline: none;
+      border: none;
+      color: #020b16;
+      font-size: 0.88rem;
+      font-family: Inter;
+      line-height: 1.125rem;
+      letter-spacing: 0.02rem;
+    }
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  .check-box-input-field:hover {
+    border: 0.06rem solid #020b16;
+  }
+  .active {
+    border: 0.06rem solid var(--primary-blue, #136fdf) !important;
+  }
+  .helper-text {
+    color: var(--grey-900-text, #65778b);
+    font-size: 0.75rem;
+    font-family: Inter;
+    line-height: 1.13rem;
+    letter-spacing: 0.02rem;
+  }
+  .error-message {
+    top: calc(100% + 0.25rem);
+    position: absolute;
+    color: var(--revamp-red, #e23c4a);
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    /* Revamp/Body-Small */
+    font-family: Inter;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem; /* 150% */
+    letter-spacing: 0.01563rem;
+  }
+}
+
+.small {
+  .check-box-input-field {
+    height: 1.75rem;
+  }
+}
+
+.check-box-disabled {
+  .check-box-input-field {
+    border-radius: 0.25rem;
+    border: 0.06rem solid #e7eaed;
+    background: #f7f9fc;
+    &:hover {
+      border: 0.06rem solid #e7eaed;
+    }
+  }
+}
+
+.check-box-dropdown-menu {
+  // width: 100%;
+
+  background: #fff;
+  z-index: 1;
+  position: absolute;
+  // top: calc(100% + 0.5rem);
+  //  left: 0rem;
+  border-radius: 0.25rem;
+  background: var(--revamp-white, #fff);
+  box-shadow: 0rem 0.06rem 0.25rem 0rem rgba(53, 56, 70, 0.32);
+  padding: 0.5rem 0rem;
+  .check-box-search {
+    margin: 0rem 0.5rem;
+    height: 1.75rem;
+    padding: 0.31rem 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0.25rem;
+    border: 0.06rem solid var(--phase-15-seperator, #dfe3eb);
+    background: var(--white, #fff);
+    img {
+      width: 1.125rem;
+      height: 1.125rem;
+      margin-right: 0.25rem;
+    }
+    input {
+      outline: none;
+      border: none;
+      width: calc(100% - 1.125rem - 0.25rem);
+      color: var(--phase-15-grey-800-text-disabled, #62646f);
+      font-family: Inter;
+      font-size: 0.88rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.125rem; /* 150% */
+      letter-spacing: 0.01563rem;
+      color: #1f2232;
+    }
+    ::placeholder {
+      color: #62646f;
+    }
+  }
+  .check-box-options {
+    max-height: 13.25rem;
+    margin-top: 0.25rem;
+    width: 100%;
+    .check-box-option {
+      width: 100%;
+      cursor: pointer;
+      height: 2.5rem;
+      padding: 0rem 0.5rem;
+      margin-bottom: 0.13rem;
+      color: var(--revamp-text-text-secondary, #62646f);
+      font-feature-settings: 'clig' off, 'liga' off;
+      font-family: Inter;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.13rem; /* 150% */
+      letter-spacing: 0.02rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      &.selected {
+        background: var(--revamp-greys-grey-50, #f3f8fd);
+      }
+      &:hover {
+        background: var(--revamp-greys-grey-50, #f4f4f5);
+      }
+      .checkbox {
+        .checkmark::before {
+          border: none;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0rem;
+      }
+    }
+  }
+}

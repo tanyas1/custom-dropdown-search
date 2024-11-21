@@ -1,0 +1,115 @@
+<div
+  class="check-box-dropdown"
+  [ngClass]="{ small: size === 'small', 'check-box-disabled': disabled }"
+>
+  <div class="dropdown-label" *ngIf="label">
+    {{ label }} <span *ngIf="required" class="required-indicator">*</span>
+  </div>
+  <div
+    class="check-box-input-field"
+    [ngStyle]="{
+      'border-color':
+        required && touched === 2 && !values.length ? '#E23C4A' : ''
+    }"
+    #dropdownFieldRef
+    (click)="toggle(true)"
+  >
+    <div
+      class="check-box-input-value"
+      #valueRef
+      *ngIf="valueObjects.length > 0"
+      [ngStyle]="{ color: '#1F2232' }"
+    >
+      <strong>{{ valueObjects.length }}</strong
+      >{{ displayedValue }}
+    </div>
+    <div
+      class="check-box-input-value"
+      #valueRef
+      *ngIf="valueObjects.length === 0"
+      [ngStyle]="{ color: '#62646F' }"
+    >
+      {{ placeholder }}
+    </div>
+    <img
+      #chevronIconRef
+      class="check-box-dropdown-icon"
+      src="{{ 'assets/icons/form-dropdown-chevron.svg' }}"
+      alt=""
+    />
+  </div>
+  <div class="helper-text" *ngIf="helperText">{{ helperText }}</div>
+  <div
+    class="error-message"
+    *ngIf="required && touched === 2 && !values.length"
+  >
+    {{ errorMessage }}
+  </div>
+
+  <ng-template cdkPortal #checkboxDropdownMenuTemplate="cdkPortal">
+    <div
+      class="check-box-dropdown-menu"
+      #dropdownMenuRef
+      *ngIf="dropdownToggle"
+      [style.top.px]="dropDownPosition === 'up' ? null : top"
+      [style.bottom.px]="dropDownPosition === 'up' ? bottom : null"
+      [style.left.px]="left"
+      [style.width.px]="width"
+    >
+      <div class="check-box-search" #searchRef *ngIf="search">
+        <img
+          class="check-box-search-icon"
+          src="{{ 'assets/icons/dropdown-search.svg' }}"
+          alt=""
+        />
+        <input
+          class="check-box-search-input"
+          #searchInput
+          type="text"
+          placeholder="Search items"
+        />
+      </div>
+      <div
+        class="check-box-options"
+        overlay-scrollbars
+        
+        [options]="{ scrollbars: { theme: 'os-theme-custom' } }"
+      >
+        <div
+          class="check-box-option"
+          [ngClass]="{ selected: allSelected }"
+          *ngIf="options.length"
+          (click)="onSelectAll()"
+        >
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              class="check-box-input"
+              [checked]="allSelected"
+              [disabled]="disabled"
+            />
+            <div class="checkmark"></div>
+            <div class="label">Select all</div>
+          </div>
+        </div>
+        <div
+          class="check-box-option"
+          [ngClass]="{ selected: option.selected }"
+          *ngFor="let option of options"
+          (click)="onClick(option)"
+        >
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              class="check-box-input"
+              [checked]="option.selected"
+              [disabled]="disabled"
+            />
+            <div class="checkmark"></div>
+            <div class="label">{{ option.label }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
